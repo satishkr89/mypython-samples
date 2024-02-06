@@ -10,6 +10,7 @@
 # Also tell him the number of rooms that you had earlier in your home and the new number of rooms that you have now.
 
 rooms_in_home=2
+nw_
 newly_built_rooms_first_floor=3
 
 total_rooms_in_home = rooms_in_home + newly_built_rooms_first_floor
@@ -27,3 +28,4 @@ print(f"now we have {post_remodel_room_onFirstfloor} room on first floor")
 total_rooms_in_home = rooms_in_home + post_remodel_room_onFirstfloor
 
 print(f"now we have {total_rooms_in_home} rooms in our home")
+
