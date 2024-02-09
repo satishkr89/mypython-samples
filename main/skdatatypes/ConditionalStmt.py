@@ -28,24 +28,7 @@
 
 
 
-# name = input("Please enter student name ")
 
-# marks = float(input("Please enter student marks "))
-
-# print(f"you entered student {name} and his/her marks {marks}")
-# if marks >= 90:
-#     print(f"Student {name} got grade A")
-# elif marks >= 80:
-#     print(f"Student {name} got grade B")
-# elif marks >= 70:
-#     print(f"Student {name} got grade C")
-
-# if marks <= 70:
-#     print(f"Student {name} got grade C")
-# elif (marks >= 70  <= 80): # do not use & it is a bitwise operator 
-#     print(f"Student {name} got grade B")
-# elif marks >= 90:
-#     print(f"Student {name} got grade A")
 
 #hw - calculator
 
@@ -78,30 +61,33 @@
 # elif ops == 'd':
 #     print(f"{firstnum} Division to {scndnum} is equal to {firstnum/scndnum}")
 # print("done")
-# try:
-#     print("this is satish's calculator")
-#     while(True):
+try:
+    print("this is satish's calculator")
+    while(True):
+        print("Press 'a' for Addition")
+        print("Press 'm' for Multiplication")
+        print("Press 'd' for Division")
+        print("Press 'q' to quit calculator")
+        ops = input("enter arithmatic operation you want? or q for quitting calculator")
+        if ops == "q":
+            print("quitting calculator")
+            break
         
-#         firstnum = int(input("enter first number : "))
-#         scndnum = int(input("enter second number: "))
-#         print("Press 'a' for Addition")
-#         print("Press 'm' for Multiplication")
-#         print("Press 'd' for Division")
-#         print("Press 'q' to quit calculator")
+        firstnum = int(input("enter first number : "))
+        scndnum = int(input("enter second number: "))
+        
 
-#         ops = input("enter arithmatic operation you want? ")
+        
 
-#         if ops == 'a':
-#             print(f"{firstnum} added to {scndnum} is equal to {firstnum+scndnum}")
-#         elif ops == 'm':
-#             print(f"{firstnum} Multiplication to {scndnum} is equal to {firstnum*scndnum}")
-#         elif ops == 'd':
-#             print(f"{firstnum} Division to {scndnum} is equal to {firstnum/scndnum}")
-#         elif ops == "q":
-#             print("quitting calculator")
-#             break
-# except:
-#     print("Exception....")
+        if ops == 'a':
+            print(f"{firstnum} added to {scndnum} is equal to {firstnum+scndnum}")
+        elif ops == 'm':
+            print(f"{firstnum} Multiplication to {scndnum} is equal to {firstnum*scndnum}")
+        elif ops == 'd':
+            print(f"{firstnum} Division to {scndnum} is equal to {firstnum/scndnum}")
+        
+except:
+    print("Exception....")
 
 
 # make an area calculator:
