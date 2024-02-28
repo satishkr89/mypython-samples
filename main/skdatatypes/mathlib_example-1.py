@@ -19,12 +19,14 @@ groceries = ["tomato", "beans", "apple", "carrot"]
 
 # print(f"randomly selecting grocery item: " , random.choice(groceries))
 
-# print(f"randomly printing numbers between 0 and 1 : " , random.random())
+print(f"randomly printing numbers between 0 and 1 : " , random.random())
+
+print(f"randomly printing numbers between 0 and 1 : " , round(random.random()*100))
 
 # print(f"randomly printing numbers from given range : " , random.randrange(100, 400))
 
 # print(f"randomly printing int numbers : " , random.randint(1, 9999999)) #optionally providing range
 
-random.shuffle(groceries) # it will change list
+# random.shuffle(groceries) # it will change list
 
-print(f"shuffeling groceries : " , groceries) 
+# print(f"shuffeling groceries : " , groceries) 
