@@ -101,14 +101,96 @@ class TicTacToe:
     
     def is_board_full(self):
         is_full = False
+        row1=self.board_status[0]
+        row2=self.board_status[1]
+        row3=self.board_status[2]
+        if row1[0] == self.x_player_choice or row1[0] == self.o_player_choice: 
+            is_full = True
+        if row1[1] == self.x_player_choice or row1[1] == self.o_player_choice: 
+            is_full = True
+        if row2[2] == self.x_player_choice or row2[2] == self.o_player_choice: 
+            is_full = True
+        else:
+            is_full= True
+        return is_full 
+    
+    def is_winner(self):
+        row1=self.board_status[0]
+        row2=self.board_status[1]
+        row3=self.board_status[2]
+        winner_player="none"
+        
+        if row1[0] == self.x_player_choice and row1[1] == self.x_player_choice and row1[2] == self.x_player_choice: 
+            print("row1 taken by x player ")
+            winner_player=self.x_player
+        elif row2[0] == self.x_player_choice and row2[1] == self.x_player_choice and row2[2] == self.x_player_choice: 
+            print("row2 taken by x player ")
+            winner_player=self.x_player
+        elif row3[0] == self.x_player_choice and row3[1] == self.x_player_choice and row3[2] == self.x_player_choice: 
+            print("row3 taken by x player ")
+            winner_player=self.x_player
+        elif row1[0] == self.x_player_choice and row2[0] == self.x_player_choice and row3[0] == self.x_player_choice: 
+            print("col1 taken by x player ")
+            winner_player=self.x_player
+        elif row1[1] == self.x_player_choice and row2[1] == self.x_player_choice and row3[1] == self.x_player_choice: 
+            print("col2 taken by x player ")
+            winner_player=self.x_player
+        elif row1[2] == self.x_player_choice and row2[2] == self.x_player_choice and row3[2] == self.x_player_choice: 
+            print("col3 taken by x player ")
+            winner_player=self.x_player
+        elif row1[0] == self.x_player_choice and row2[1] == self.x_player_choice and row3[2] == self.x_player_choice: 
+            print("diagnol topL->BottomR taken by x player ")
+            winner_player=self.x_player
+        elif row1[2] == self.x_player_choice and row2[1] == self.x_player_choice and row3[0] == self.x_player_choice: 
+            print("diagnol topR->BottomL taken by x player ")
+            winner_player=self._player
+        elif row1[0] == self.o_player_choice and row1[1] == self.o_player_choice and row1[2] == self.o_player_choice: 
+            print("row1 taken by o player ")
+            winner_player=self.o_player  
+        elif row2[0] == self.o_player_choice and row2[1] == self.o_player_choice and row2[2] == self.o_player_choice: 
+            print("row2 taken by o player ")
+            winner_player=self.o_player
+        elif row3[0] == self.o_player_choice and row3[1] == self.o_player_choice and row3[2] == self.o_player_choice: 
+            print("row3 taken by o player ")
+            winner_player=self.o_player
+        elif row1[0] == self.o_player_choice and row2[0] == self.o_player_choice and row3[0] == self.o_player_choice: 
+            print("col1 taken by o player ")
+            winner_player=self.o_player
+        elif row1[1] == self.o_player_choice and row2[1] == self.o_player_choice and row3[1] == self.o_player_choice: 
+            print("col2 taken by o player ")
+            winner_player=self.o_player
+        elif row1[2] == self.o_player_choice and row2[2] == self.o_player_choice and row3[2] == self.o_player_choice: 
+            print("col3 taken by o player ")
+            winner_player=self.o_player
+        elif row1[0] == self.o_player_choice and row2[1] == self.o_player_choice and row3[2] == self.o_player_choice: 
+            print("diagnol topL->BottomR taken by o player ")
+            winner_player=self.o_player
+        elif row1[2] == self.o_player_choice and row2[1] == self.o_player_choice and row3[0] == self.o_player_choice: 
+            print("diagnol topR->BottomL taken by o player ")
+            winner_player=self.o_player
+        else: 
+            print("no one won----->")
+            winner_player="none"
+        return winner_player 
+    
+    
+    def is_board_full(self):
+        is_full = False
         for row in self.board_status:
-            if row[0] == self.x_player_choice or row[0] == self.o_player_choice:
-                is_full = True
+            if row[0] == self.x_player_choice or row[0] == self.o_player_choice: 
+                if row[1] == self.x_player_choice or row[1] == self.o_player_choice: 
+                    if row[2] == self.x_player_choice or row[2] == self.o_player_choice: 
+                        is_full = True
+                    else:
+                        is_full = False
+                        break
+                else:
+                    is_full = False
+                    break
             else:
-                is_full= True
+                is_full = False
                 break
         return is_full 
-
     
     def update_board(self, current_player, choice):
         #print(f"Board status is: {self.board_status}"
@@ -259,7 +341,7 @@ class TicTacToe:
         else:
             print(f"invalid choice: {choice}")
         
-        #print(self.board_status)
+
     
     def play_game(self):
         print("====================================================================")
@@ -289,17 +371,24 @@ class TicTacToe:
                 if player_choice == "q":
                     print("Quitting game, player selected to quit")
                     break
-                # elif self.is_board_full():
-                #     print("Quitting game, board is full")
-                #     break
+                elif self.is_board_full():
+                    print("Quitting game, board is full")
+                    break
                 else:
                     self.update_board(current_player, player_choice)
-                    
+                    winner_player = self.is_winner()
+                    if winner_player == "none":
+                        pass
+                    else:
+                        print(f"Quitting game, the winning player is: {winner_player}")
+                        break
                 if current_player == self.first_player_to_make_choice:
                     current_player = self.second_player_to_make_choice
                 else:
                     current_player = self.first_player_to_make_choice
-                self._draw_player_choice_selected_board(self.board_status)       
+                self.update_board(current_player, player_choice)
+                self._draw_player_choice_selected_board(self.board_status)
+            self._draw_player_choice_selected_board(self.board_status)       
         except Exception as exp:
             print("Exception....->", type(exp), exp )
             print("Exception....")
