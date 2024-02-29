@@ -99,20 +99,50 @@ class TicTacToe:
         else:
             return players[1]
     
+        
     def is_board_full(self):
+        is_full = False
+        for row in self.board_status:
+            if row[0] == self.x_player_choice or row[0] == self.o_player_choice: 
+                if row[1] == self.x_player_choice or row[1] == self.o_player_choice: 
+                    if row[2] == self.x_player_choice or row[2] == self.o_player_choice: 
+                        is_full = True
+                    else:
+                        is_full = False
+                        break
+                else:
+                    is_full = False
+                    break
+            else:
+                is_full = False
+                break
+        return is_full 
+    
+    #following is not used
+    def is_board_full_V1(self):
         is_full = False
         row1=self.board_status[0]
         row2=self.board_status[1]
         row3=self.board_status[2]
         if row1[0] == self.x_player_choice or row1[0] == self.o_player_choice: 
             is_full = True
-        if row1[1] == self.x_player_choice or row1[1] == self.o_player_choice: 
+        if row3[1] == self.x_player_choice or row3[1] == self.o_player_choice: 
             is_full = True
         if row2[2] == self.x_player_choice or row2[2] == self.o_player_choice: 
             is_full = True
         else:
             is_full= True
         return is_full 
+    
+    # try more efficient method to find winner
+    def is_winnerv2(self):
+        winner_player="none"
+        for row in self.board_status:
+            for col in row:
+                if col  == self.x_player_choice:
+                    print("row1 taken by x player ")
+                elif col  == self.o_player_choice:
+                    print("row1 taken by o player ")
     
     def is_winner(self):
         row1=self.board_status[0]
@@ -172,25 +202,6 @@ class TicTacToe:
             print("no one won----->")
             winner_player="none"
         return winner_player 
-    
-    
-    def is_board_full(self):
-        is_full = False
-        for row in self.board_status:
-            if row[0] == self.x_player_choice or row[0] == self.o_player_choice: 
-                if row[1] == self.x_player_choice or row[1] == self.o_player_choice: 
-                    if row[2] == self.x_player_choice or row[2] == self.o_player_choice: 
-                        is_full = True
-                    else:
-                        is_full = False
-                        break
-                else:
-                    is_full = False
-                    break
-            else:
-                is_full = False
-                break
-        return is_full 
     
     def update_board(self, current_player, choice):
         #print(f"Board status is: {self.board_status}"
