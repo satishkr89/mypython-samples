@@ -50,7 +50,11 @@ import random
 # Task9: If no one has won the game yet then switch the turn to the other player and continue again from Task3.
 # For switching the turn: if the current player is 'x' the turn must switch to 'o' 
 # and if the current player is 'o' the turn must switch to 'x' 
+x_player="x_player"
 
+def print_player():
+    print(x_player)
+    
 class TicTacToe:
     x_player="x_player"
     o_player="o_player"
@@ -61,7 +65,6 @@ class TicTacToe:
     
     first_player_to_make_choice="none"
     second_player_to_make_choice="none"
-    
     
     def __init__(self, size_of_board = 3):
         self.size_of_board=size_of_board
@@ -91,13 +94,15 @@ class TicTacToe:
             print("------    -----+------+-----") # divider
     
     def toss(self):
+        #alternatively use random.choice(players)
         players = ["x_player", "o_player"]
-        random.shuffle(players)
-        toss_num = round(random.random()*100)
-        if toss_num > 50:
-            return players[0]
-        else:
-            return players[1]
+        # random.shuffle(players)
+        # toss_num = round(random.random()*100)
+        # if toss_num > 50:
+        #     return players[0]
+        # else:
+        #     return players[1]
+        return random.choice(players)
     
         
     def is_board_full(self):
@@ -265,9 +270,7 @@ class TicTacToe:
                 print("Invalid choice! Already selected.")
             else:
                 print("Invalid choice! it shouldn't come to this section!")
-            
-            
-            
+                
         elif choice == "r2c2":
             row2 = self.board_status[1]
             col2 = row2[1]
